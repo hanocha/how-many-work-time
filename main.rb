@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'mechanize'
 require 'nokogiri'
 
 unless File.exist?('./code.conf')
@@ -13,4 +14,10 @@ else
 end
 
 uri = "https://ssl.jobcan.jp/employee/attendance?code=#{code}"
-doc = Nokogiri::HTML(open(uri))
+
+agent = Mechanize.new
+agent.user_agent = 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)'
+top_page = agent.get(uri)
+main_page = top_page.link_with(uri: top_page.links[4].uri).click
+
+doc = Nokogiri::HTML(main_page.body)
