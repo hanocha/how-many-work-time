@@ -21,3 +21,7 @@ top_page = agent.get(uri)
 main_page = top_page.link_with(uri: top_page.links[4].uri).click
 
 doc = Nokogiri::HTML(main_page.body)
+work_days = doc.xpath("//body").css('div.infotpl > table.left > tbody > tr > td')[3].text.strip.slice(0,2)
+work_hours = 8 * work_days.to_i
+
+p work_hours
