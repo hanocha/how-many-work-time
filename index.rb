@@ -8,6 +8,6 @@ get '/' do
 end
 
 get '/jobcan' do
-  j = Jobcan.new('test code')
-  "#{j.code}, #{j.agent.user_agent}"
+  @j = Jobcan.new(@params[:code])
+  slim :jobcan
 end
