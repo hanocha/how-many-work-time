@@ -1,9 +1,14 @@
 html
   head
+    link rel='stylesheet' type='text/css' href='./css/bulma.css'
   body
-    h1 Flex-time calculator
+    .container
+      .content
+        h1 Flex-time calculator
 
-    form action='jobcan' method='get'
-      label Code:
-      input type='text' name='code'
-      input type='submit'
+        form action='jobcan' method='get'
+          label.label Code
+          p.control
+            input.input type='text' name='code'
+          p.control
+            input.button.is-primary type='submit'
