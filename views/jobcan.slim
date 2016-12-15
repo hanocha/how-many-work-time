@@ -25,10 +25,13 @@ html
           = "有給(半休)消化数：#{@j.half_salaried_days}"
 
         p
-          = "今月の残り出勤日数：#{@j.std_work_days - (@j.worked_days + @j.salaried_days)}"
+          = "今月の残り出勤日数：#{@j.remain_work_days}"
 
         p
           = "残りの標準労働時間：#{(@j.std_work_days - (@j.worked_days + @j.salaried_days)) * 8}"
 
         p
-          = "1日あたり何時間働けばいいか：#{(@j.std_work_hours - (@j.worked_hours + 8 * @j.salaried_days + 4 * @j.half_salaried_days)) / 8}"
+          = "実質労働時間: #{@j.excess_work_times}"
+
+        p
+          = "1日あたり何時間働けばいいか：#{@j.required_work_times}"
