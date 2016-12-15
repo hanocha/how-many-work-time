@@ -1,0 +1,34 @@
+html
+  head
+    link rel='stylesheet' type='text/css' href='./css/bulma.css'
+  body
+    .container
+      .content
+        h1 Jobcan
+
+        p
+          = "所定労働日数：#{@j.std_work_days}"
+
+        p
+          = "所定労働時間：#{@j.std_work_hours}"
+
+        p
+          = "実働日数：#{@j.worked_days}"
+
+        p
+          = "実働時間(有給分を含まない)：#{@j.worked_hours}"
+
+        p
+          = "有給(全休)消化数：#{@j.salaried_days}"
+
+        p
+          = "有給(半休)消化数：#{@j.half_salaried_days}"
+
+        p
+          = "今月の残り出勤日数：#{@j.std_work_days - (@j.worked_days + @j.salaried_days)}"
+
+        p
+          = "残りの標準労働時間：#{(@j.std_work_days - (@j.worked_days + @j.salaried_days)) * 8}"
+
+        p
+          = "1日あたり何時間働けばいいか：#{(@j.std_work_hours - (@j.worked_hours + 8 * @j.salaried_days + 4 * @j.half_salaried_days)) / 8}"
