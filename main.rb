@@ -63,6 +63,11 @@ class Jobcan
     worked_hours + (salaried_days * 8) + (half_salaried_days * 4)
   end
 
+  # 何時間余裕があるか(残り全ての日８時間労働すると仮定して)
+  def work_time_margin
+    excess_work_times - (std_work_hours - (remain_work_days * 8))
+  end
+
   # 何時間働けばいいか
   def required_work_times
     (std_work_hours - excess_work_times) / remain_work_days
