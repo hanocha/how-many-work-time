@@ -7,34 +7,19 @@ html
         h1 Jobcan
 
         p
-          = "所定労働日数：#{@j.std_work_days}"
-
-        p
-          = "所定労働時間：#{@j.std_work_hours}"
-
-        p
-          = "実働日数：#{@j.worked_days}"
-
-        p
-          = "実働時間(有給分を含まない)：#{@j.worked_hours}"
-
-        p
-          = "有給(全休)消化数：#{@j.salaried_days}"
-
-        p
-          = "有給(半休)消化数：#{@j.half_salaried_days}"
+          = "実働時間(有給分を含まない)：#{Jobcan.to_time(@j.worked_hours)}"
 
         p
           = "今月の残り出勤日数：#{@j.remain_work_days}"
 
         p
-          = "残りの標準労働時間：#{(@j.std_work_days - (@j.worked_days + @j.salaried_days)) * 8}"
+          = "残りの標準労働時間：#{Jobcan.to_time((@j.std_work_days - (@j.worked_days + @j.salaried_days)) * 8)}"
 
         p
-          = "実質労働時間: #{@j.excess_work_times}"
+          = "実質労働時間: #{Jobcan.to_time(@j.excess_work_times)}"
 
         p
-          = "貯金: #{@j.work_time_margin}"
+          = "貯金: #{Jobcan.to_time(@j.work_time_margin)}"
 
         p
-          = "1日あたり何時間働けばいいか：#{@j.required_work_times}"
+          = "1日あたり何時間働けばいいか：#{Jobcan.to_time(@j.required_work_times)}"

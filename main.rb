@@ -72,4 +72,8 @@ class Jobcan
   def required_work_times
     (std_work_hours - excess_work_times) / remain_work_days
   end
+
+  def self.to_time(float_time)
+    "#{float_time.floor} 時間 #{((float_time % 1) * 60).floor} 分"
+  end
 end
