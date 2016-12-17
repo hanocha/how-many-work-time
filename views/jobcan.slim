@@ -2,24 +2,82 @@ html
   head
     link rel='stylesheet' type='text/css' href='./css/bulma.css'
   body
-    .container
-      .content
-        h1 Jobcan
+    section.hero
+      .hero-head
+        nav.nav
+          .container
+            .nav-left
+              a.nav-item.is-brand href='#'
+                p HOW-MANY-WORK-TIME?
 
-        p
-          = "実働時間(有給分を含まない)：#{Jobcan.to_time(@j.worked_hours)}"
+      .hero-body
+        .container
+          .content
+            h2 Work time informations
 
-        p
-          = "今月の残り出勤日数：#{@j.remain_work_days}"
+            table.table.is-striped
+              tbody
+                tr
+                  td 所定労働時間
+                  td = Jobcan.to_time(@j.std_work_hours)
+            
+                tr
+                  td 今までの実質労働時間
+                  td = Jobcan.to_time(@j.excess_work_times)
+            
+                tr
+                  td 今月の残り出勤日数
+                  td = "#{@j.remain_work_days} 日"
+                  
+                tr
+                  td 貯金
+                  td = Jobcan.to_time(@j.work_time_margin)
 
-        p
-          = "残りの標準労働時間：#{Jobcan.to_time((@j.std_work_days - (@j.worked_days + @j.salaried_days)) * 8)}"
+                tr
+                  td 1日あたり何時間働けばいいか
+                  td = Jobcan.to_time(@j.required_work_times)
 
-        p
-          = "実質労働時間: #{Jobcan.to_time(@j.excess_work_times)}"
+            a.button href="/jobcan?code=#{params[:code]}"
+              | Reload
 
-        p
-          = "貯金: #{Jobcan.to_time(@j.work_time_margin)}"
+            hr
 
-        p
-          = "1日あたり何時間働けばいいか：#{Jobcan.to_time(@j.required_work_times)}"
+            h2 解説
+
+            p
+              | 全体を通して、勤務中に数値を確認すると一部の数値が本来ありえないように見える数値になることがあります。
+              br
+              | 退勤後に確認することで正しい（？）数値を確認できます。
+
+            h3 所定労働時間
+            p
+              | 今月働かなければいけない時間数です。今月の労働日数に8をかけたものになります。
+
+            h3 今までの実質労働時間
+            p
+              | このページを開いた時点までで働いた時間です。
+              br
+              | 実際の労働時間に、全休1回につき8時間、半休1回につき4時間が加算されたものです。
+
+            h3 貯金
+            p
+              | このページを開いた時点までの標準的な労働時間に対して、どれだけ余分に働いているかを表します。
+              br
+              | 所定労働日数から残りの出勤可能日数を引き、それに8をかけたものが標準的な労働時間になります。
+              br
+              | これまでの実質労働時間から標準的な労働時間を引いたものが貯金になります。
+              br
+              | ※ 勤務中に見ると大きくマイナスになることがあります。
+            
+            h3 1日あたり何時間働けばいいか
+            p
+              | 貯金を残りの勤務日数で等分し、1日あたりどれだけ働けばいいかを示します。
+              br
+              | ※ 貯金と同じく、勤務中に見ると値が意図しないものになることがあります。
+
+
+      .hero-foot
+        footer.footer
+          .container
+            .content.has-text-centered
+              | &copy; 2016 how-many-work-time 
