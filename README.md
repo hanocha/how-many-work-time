@@ -1,5 +1,9 @@
 # How many work time
 
+You can use this app on the heroku!
+
+https://how-many-work-time.herokuapp.com/
+
 You can check how long have you worked in this month.
 
 
