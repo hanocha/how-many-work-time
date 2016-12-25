@@ -54,6 +54,11 @@ class Jobcan
     (am + pm) * 2
   end
 
+  # 勤務状態を判定する
+  def working?
+    @main_page.xpath("//*[contains(./text(),'勤務中')]") == [] ? false : true
+  end
+  
   # 所定労働時間
   # 所定労働日数を8倍したもの。
   def std_work_hours
