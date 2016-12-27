@@ -6,11 +6,6 @@ class Jobcan
   JOBCAN_BASE_URI = "https://ssl.jobcan.jp/employee/attendance?code="
   attr_accessor :agent, :main_page
 
-  # 浮動小数点で表されている時間を時刻形式に変換して返す
-  def self.to_time(float_time)
-    "#{float_time.floor} 時間 #{((float_time % 1) * 60).floor} 分"
-  end
-
   def initialize(code)
     @agent = Mechanize.new
     @agent.user_agent = 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)'
@@ -19,6 +14,16 @@ class Jobcan
     @main_page = Nokogiri::HTML(main.body)
   end
 
+  # 浮動小数点で表されている時間を時刻形式に変換して返す
+  def self.to_time(float_time)
+    "#{float_time.floor} 時間 #{((float_time % 1) * 60).floor} 分"
+  end
+
+  # 勤務状態を判定する
+  def working?
+    @main_page.xpath("//*[contains(./text(),'勤務中')]") == [] ? false : true
+  end
+  
   # 所定労働日数
   # ページから直接取得できる情報を用いる。
   def std_work_days
@@ -28,7 +33,8 @@ class Jobcan
   # 実働日数
   # ページから直接取得できる情報を用いる。
   def worked_days
-    @main_page.xpath("//*[contains(./text(),'実働日数')]/following-sibling::*").text.strip.to_i
+    days = @main_page.xpath("//*[contains(./text(),'実働日数')]/following-sibling::*").text.strip.to_i
+    working? ? (days - 1) : days
   end
 
   # 実労働時間
@@ -54,11 +60,6 @@ class Jobcan
     (am + pm) * 2
   end
 
-  # 勤務状態を判定する
-  def working?
-    @main_page.xpath("//*[contains(./text(),'勤務中')]") == [] ? false : true
-  end
-  
   # 所定労働時間
   # 所定労働日数を8倍したもの。
   def std_work_hours
