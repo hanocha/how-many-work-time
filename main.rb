@@ -16,12 +16,12 @@ class Jobcan
 
   # 浮動小数点で表されている時間を時刻形式に変換して返す
   def self.to_time(float_time)
-    "#{float_time.floor} 時間 #{((float_time % 1) * 60).floor} 分"
+    "#{float_time.to_i} 時間 #{((float_time - float_time.to_i) * 60).round} 分"
   end
 
   # 勤務状態を判定する
   def working?
-    @main_page.xpath("//*[contains(./text(),'勤務中')]") == [] ? false : true
+    @main_page.xpath("//*[contains(./text(),'勤務中')]") == []
   end
   
   # 所定労働日数
