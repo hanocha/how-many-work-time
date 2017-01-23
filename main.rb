@@ -2,14 +2,14 @@ require 'open-uri'
 require 'mechanize'
 require 'nokogiri'
 
-class Jobcan
-  JOBCAN_BASE_URI = "https://ssl.jobcan.jp/employee/attendance?code="
+class HowManyWorkTime
+  BASE_URL = ENV['BASE_URL']
   attr_accessor :agent, :main_page
 
   def initialize(code)
     @agent = Mechanize.new
     @agent.user_agent = 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)'
-    top = @agent.get(JOBCAN_BASE_URI + code)
+    top = @agent.get(BASE_URL + code)
     main = top.link_with(uri: top.links[4].uri).click
     @main_page = Nokogiri::HTML(main.body)
   end

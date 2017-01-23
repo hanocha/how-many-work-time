@@ -20,11 +20,11 @@ html
               tbody
                 tr
                   td 所定労働時間
-                  td = Jobcan.to_time(@j.std_work_hours)
+                  td = HowManyWorkTime.to_time(@j.std_work_hours)
             
                 tr
                   td 今までの実質労働時間
-                  td = Jobcan.to_time(@j.excess_work_times)
+                  td = HowManyWorkTime.to_time(@j.excess_work_times)
             
                 tr
                   td 今月の残り出勤日数
@@ -32,13 +32,13 @@ html
                   
                 tr
                   td 貯金
-                  td = Jobcan.to_time(@j.work_time_margin)
+                  td = HowManyWorkTime.to_time(@j.work_time_margin)
 
                 tr
                   td 1日あたり何時間働けばいいか
-                  td = Jobcan.to_time(@j.required_work_times)
+                  td = HowManyWorkTime.to_time(@j.required_work_times)
 
-            a.button href="/jobcan?code=#{params[:code]}"
+            a.button href="/profile?code=#{params[:code]}"
               | Reload
 
             hr

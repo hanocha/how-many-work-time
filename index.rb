@@ -6,10 +6,10 @@ get '/' do
   slim :index
 end
 
-get '/jobcan' do
+get '/profile' do
   begin
-    @j = Jobcan.new(@params[:code])
-    slim :jobcan
+    @j = HowManyWorkTime.new(@params[:code])
+    slim :profile
   rescue
     slim :error
   end
