@@ -54,6 +54,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # add custom gems below.
 
+gem "bulma-rails", "~> 0.3.2"
 gem 'slim-rails'
 
 group :development, :test do
