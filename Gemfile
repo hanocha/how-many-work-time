@@ -56,7 +56,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "bulma-rails", "~> 0.3.2"
 gem 'slim-rails'
+gem 'mechanize'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
 end
