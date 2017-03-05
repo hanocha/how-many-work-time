@@ -54,6 +54,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # add custom gems below.
 
+gem 'slim-rails'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
 end
