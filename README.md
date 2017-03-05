@@ -1,39 +1,24 @@
-# How many work time
+# README
 
-You can use this app on the heroku!
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-https://how-many-work-time.herokuapp.com/
+Things you may want to cover:
 
-You can check how long have you worked in this month.
+* Ruby version
 
+* System dependencies
 
-# Requirements
+* Configuration
 
-- Ruby 2.3.0 or later
-- bundler
+* Database creation
 
+* Database initialization
 
-# Usage
+* How to run the test suite
 
-## 1. bundle install
+* Services (job queues, cache servers, search engines, etc.)
 
-```
-$ bundle install
-```
+* Deployment instructions
 
-
-## 2. Start server
-
-```
-$ bundle exec ruby index.rb
-```
-
-
-## 3. Open the page
-
-Open http://localhost:4567/ in your browser.
-
-
-## 4. Input your code
-
-If you don't know what is the code, please ask me.
+* ...
