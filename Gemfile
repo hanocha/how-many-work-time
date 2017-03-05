@@ -55,13 +55,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # add custom gems below.
 
 gem "bulma-rails", "~> 0.3.2"
-gem 'slim-rails'
 gem 'mechanize'
+gem 'slim-rails'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.5'
-  gem 'pry-rails'
-  gem 'pry-doc'
   gem 'pry-byebug'
+  gem 'pry-doc'
+  gem 'pry-rails'
   gem 'pry-stack_explorer'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'webmock'
 end
