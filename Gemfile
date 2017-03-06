@@ -57,8 +57,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "bulma-rails", "~> 0.3.2"
 gem 'mechanize'
-gem 'slim-rails'
 gem 'pg'
+gem 'ridgepole'
+gem 'slim-rails'
 
 group :development, :test do
   gem 'pry-byebug'
