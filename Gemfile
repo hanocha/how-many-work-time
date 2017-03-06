@@ -59,6 +59,7 @@ gem "bulma-rails", "~> 0.3.2"
 gem 'mechanize'
 gem 'pg'
 gem 'ridgepole'
+gem 'ridgepole-rails', github: 'sakuro/ridgepole-rails'
 gem 'slim-rails'
 
 group :development, :test do

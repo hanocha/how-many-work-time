@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/sakuro/ridgepole-rails.git
+  revision: 37e86a6ee4062a374996439a5841321f2d052253
+  specs:
+    ridgepole-rails (0.1.0)
+      rails (~> 5.0.0)
+      ridgepole (~> 0.6.5.beta9)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -252,6 +260,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.2)
   ridgepole
+  ridgepole-rails!
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   slim-rails
