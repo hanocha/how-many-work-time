@@ -8,6 +8,16 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     section.hero
-      = render 'layouts/header'
-      = yield
-      = render 'layouts/footer'
+      .hero-head
+        = render 'layouts/header'
+
+      .hero-body
+        - if notice
+          p.notification.is-success = notice
+        - if alert
+          p.notification.is-warning = alert
+
+        = yield
+
+      .hero-foot
+        = render 'layouts/footer'

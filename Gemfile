@@ -56,6 +56,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # add custom gems below.
 
 gem "bulma-rails", "~> 0.3.2"
+gem "devise"
 gem 'mechanize'
 gem 'pg'
 gem 'ridgepole'
