@@ -9,5 +9,7 @@ html
   body
     section.hero
       = render 'layouts/header'
+      p.notification.is-success = notice
+      p.notification.is-warning = alert
       = yield
       = render 'layouts/footer'
