@@ -9,7 +9,11 @@ html
   body
     section.hero
       = render 'layouts/header'
-      p.notification.is-success = notice
-      p.notification.is-warning = alert
+      - if notice
+        p.notification.is-success = notice
+      - if alert
+        p.notification.is-warning = alert
+
       = yield
+
       = render 'layouts/footer'
