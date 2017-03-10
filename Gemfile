@@ -57,6 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "bulma-rails", "~> 0.3.2"
 gem "devise"
+gem 'font-awesome-rails'
 gem 'mechanize'
 gem 'pg'
 gem 'ridgepole'
