@@ -1,18 +1,27 @@
-h2
-  | Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.container
+  h1.title Log in
+
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    p.control.has-icon
+      = f.email_field :email, autofocus: true, class: 'input', placeholder: 'Email'
+      span.icon.is-small
+        = fa_icon "envelope"
+      
+    p.control.has-icon
+      = f.password_field :password, autocomplete: "off", class: 'input', placeholder: 'Password'
+      span.icon.is-small
+        = fa_icon "lock"
+      
+    - if devise_mapping.rememberable?
+      p.control
+        = f.label :remember_me, class: 'checkbox'
+          = f.check_box :remember_me
+          | Remember me?
+
+    p.control
+      = button_tag type: 'submit', class: 'button is-primary' do
+        span.icon.is-small
+          = fa_icon "check"
+        span Sign up
+
+  = render "devise/shared/links"
