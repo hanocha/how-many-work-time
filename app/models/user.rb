@@ -10,11 +10,11 @@ class User < ApplicationRecord
   CIPHER = 'aes-256-cbc'
 
   def code
-    decrypt(encrypted_code) if encrypted_code
+    decrypt(self.encrypted_code) if self.encrypted_code
   end
 
   def encrypt_code
-    self.encrypted_code = encrypt(@code)
+    self.encrypted_code = encrypt(@code) if @code
   end
 
   private
