@@ -19,6 +19,11 @@
       span.icon.is-small
         = fa_icon "lock"
 
+    p.control.has-icon
+      = f.text_field :code, autocomplete: "off", class: 'input', placeholder: 'Code'
+      span.icon.is-small
+        = fa_icon "id-card"
+
     p.control
       = button_tag type: 'submit', class: 'button is-primary' do
         span.icon.is-small
