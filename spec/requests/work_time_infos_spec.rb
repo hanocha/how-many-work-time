@@ -34,17 +34,27 @@ RSpec.describe 'WorkTimeInfos', type: :request do
       and_return(8)
   end
 
-  subject { get work_time_info_path(code: 'test_code') }
+  subject { get work_time_info_path }
 
   describe '#show' do
-    it 'ステータスコード200を返す' do
-      subject
-      expect(response).to have_http_status(:ok)
+    xcontext 'ログイン済みのとき' do
+      it 'ステータスコード200を返す' do
+        subject
+        expect(response).to have_http_status(:ok)
+      end
+
+      it '勤務表ページを取得する' do
+        subject
+        expect(get_attendance_page_stub).to have_been_requested
+      end
     end
 
-    it '勤務表ページを取得する' do
-      subject
-      expect(get_attendance_page_stub).to have_been_requested
+    context '未ログインのとき' do
+      it 'ログインページにリダイレクトする' do
+        subject
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to(new_user_session_path)
+      end
     end
   end
 end
