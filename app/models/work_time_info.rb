@@ -3,11 +3,15 @@ class WorkTimeInfo
 
   def self.find(code)
     wti = new
+    main_page = wti.get_attendance_page(code)
+    wti.tap { |i| i.page = Nokogiri::HTML(main_page.body) }
+  end
+
+  def get_attendance_page(code)
     agent = Mechanize.new
     agent.user_agent = 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)'
-    top = agent.get("#{Rails.application.secrets.base_url}?code=#{code}")
-    main_page = top.link_with(uri: top.links[4].uri).click
-    wti.tap { |i| i.page = Nokogiri::HTML(main_page.body) }
+    agent.get("#{Rails.application.secrets.base_url}?code=#{code}")
+    agent.get("#{Rails.application.secrets.base_url}/attendance")
   end
 
   # 浮動小数点で表されている時間を時刻形式に変換して返す
