@@ -80,6 +80,11 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.7.0)
+    factory_girl (4.8.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.8.0)
+      factory_girl (~> 4.8.0)
+      railties (>= 3.0.0)
     ffi (1.9.18)
     font-awesome-rails (4.7.0.1)
       railties (>= 3.2, < 5.1)
@@ -263,6 +268,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   devise
+  factory_girl_rails
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
