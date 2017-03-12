@@ -33,13 +33,18 @@
       span.icon.is-small
         = fa_icon "lock"
 
+    p.control.has-icon
+      = f.text_field :code, autocomplete: "off", class: 'input', placeholder: 'Code'
+      span.icon.is-small
+        = fa_icon "id-card"
+
     p.control
         = button_tag type: 'submit', class: 'button is-primary' do
           span.icon.is-small
             = fa_icon "check"
           span Update
 
-    = button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'button is-danger'
-    br
+  = button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'button is-danger'
+  br
 
-    = link_to "Back", :back, class: 'button'
+  = link_to "Back", :back, class: 'button'
