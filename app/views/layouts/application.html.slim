@@ -12,12 +12,13 @@ html
         = render 'layouts/header'
 
       .hero-body
-        - if notice
-          p.notification.is-success = notice
-        - if alert
-          p.notification.is-warning = alert
+        .container
+          - if notice
+            p.notification.is-success = notice
+          - if alert
+            p.notification.is-warning = alert
 
-        = yield
+          = yield
 
       .hero-foot
         = render 'layouts/footer'
