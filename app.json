@@ -1,0 +1,25 @@
+{
+  "name": "how-many-work-time",
+  "scripts": {
+  },
+  "env": {
+    "BASE_URL": "https://ssl.jobcan.jp/employee",
+    "LANG": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "CRYPTER_KEY": "074945e30dadffe814d95badc6f8418c"
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
