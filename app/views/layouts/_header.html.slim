@@ -4,6 +4,11 @@ nav.nav
       = link_to 'HOW-MANY-WORK-TIME?', root_path, class: 'nav-item is-brand'
 
     .nav-right.nav-menu
+      - if user_signed_in?
+        = link_to edit_user_registration_path, class: 'nav-item' do
+          span.icon
+            = fa_icon 'wrench'
+
       - unless user_signed_in?
         = link_to 'Log in', new_user_session_path, class: 'nav-item is-tab'
       - else
