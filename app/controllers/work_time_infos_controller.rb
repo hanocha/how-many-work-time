@@ -3,6 +3,7 @@ class WorkTimeInfosController < ApplicationController
 
   def show
     @wti = WorkTimeInfo.find(current_user.code)
+    return redirect_to edit_user_registration_path if @wti.std_work_days == 0
   end
 
   private
