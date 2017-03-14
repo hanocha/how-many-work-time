@@ -23,7 +23,7 @@
         td 1日あたり何時間働けばいいか
         td = WorkTimeInfo.to_time(@wti.required_work_times)
 
-  = link_to work_time_info_path(code: params[:code]) do
+  = link_to root_path do
     button.button Reload
 
   hr
