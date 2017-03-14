@@ -11,7 +11,7 @@ RSpec.describe 'WorkTimes', type: :request do
     stub_request(:get, "#{Rails.application.secrets.base_url}/attendance")
   end
 
-  subject { get work_time_info_path }
+  subject { get work_time_path }
 
   describe '#show' do
     context 'ログイン済みのとき' do
