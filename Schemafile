@@ -11,6 +11,7 @@ create_table "users", force: :cascade do |t|
   t.inet     "last_sign_in_ip"
   t.datetime "created_at",                          null: false
   t.datetime "updated_at",                          null: false
+  t.string   "encrypted_code",                      null: false
   t.index ["email"], name: "index_users_on_email", using: :btree
   t.index ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
 end

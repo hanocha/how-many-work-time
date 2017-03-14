@@ -57,6 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "bulma-rails", "~> 0.3.2"
 gem "devise"
+gem 'font-awesome-rails'
 gem 'mechanize'
 gem 'pg'
 gem 'ridgepole'
@@ -70,4 +71,8 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'rspec-rails', '~> 3.5'
   gem 'webmock'
+end
+
+group :test do
+  gem 'factory_girl_rails'
 end
