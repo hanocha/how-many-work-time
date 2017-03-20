@@ -51,6 +51,27 @@ RSpec.describe 'WorkTimes', type: :request do
             subject
             expect(get_attendance_page_stub).to have_been_requested
           end
+
+          context '残勤務日数が0日のとき' do
+            before do
+              allow_any_instance_of(WorkTimeInfo).
+                to receive(:std_work_days).
+                and_return(20)
+              
+              allow_any_instance_of(WorkTimeInfo).
+                to receive(:worked_days).
+                and_return(20)
+
+              allow_any_instance_of(WorkTimeInfo).
+                to receive(:salaried_days).
+                and_return(0)
+            end
+
+            it 'ステータスコード200を返す' do
+              subject
+              expect(response).to have_http_status(:ok)
+            end
+          end
         end
 
         context 'コードが有効なものでなかった場合' do

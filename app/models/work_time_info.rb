@@ -87,6 +87,8 @@ class WorkTimeInfo
   # 1日あたり何時間働けばいいか
   # 所定労働時間から実質労働時間を引いた値を残りの出勤可能日数で割ったもの。
   def required_work_times
+    short_time = std_work_hours - excess_work_times
+    return short_time if remain_work_days == 0
     (std_work_hours - excess_work_times) / remain_work_days
   end
 end
