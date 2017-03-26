@@ -1,14 +1,20 @@
 .content
   h2 Register Slack Notification 
 
-  | current status:
   - if @notifier.user_id
-    | enabled
+    span.tag.is-large.is-success Slack notification is enabled
     
     h3 Unregister Slack notification 
 
+    p.control
+      = link_to(notifier_path, method: :delete) do
+        button.button.is-danger
+          span.icon.is-small
+            = fa_icon 'ban'
+          span Unregister
+
   -else
-    | disabled
+    span.tag.is-large.is-warning Slack notification is disabled
 
     h3 Register
     
