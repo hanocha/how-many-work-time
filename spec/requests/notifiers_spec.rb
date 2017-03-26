@@ -13,9 +13,16 @@ RSpec.describe 'Notifiers', type: :request do
     
     before { login_as user }
 
+    subject { post notifier_path(notifier: { user_id: user.id, slack_user_name: 'test' }) }
+        
+    it 'Slack通知管理ページにリダイレクトする' do
+      subject
+      expect(response).to redirect_to notifier_path
+    end
+
     context 'Slack通知が未登録のとき' do
       it 'notifiers に新しいレコードを保存する' do
-        post notifier_path
+        subject
         expect(user.notifier).not_to be_nil
       end
     end
@@ -26,11 +33,11 @@ RSpec.describe 'Notifiers', type: :request do
       end
 
       it '既存のレコードを更新しない' do
-        expect { post notifier_path }.not_to change { user.notifier }
+        expect { subject }.not_to change { user.notifier }
       end
 
       it '新規にレコードを登録しない' do
-        post notifier_path
+        subject
         expect(Notifier.where(user_id: user.id).count).to eq 1
       end
     end
