@@ -7,12 +7,12 @@ class NotifiersController < ApplicationController
 
   def create
     Notifier.create(notifier_params)
-    redirect_to notifier_path
+    redirect_to notifier_path, notice: 'Slack notification was registered.'
   end
 
   def destroy
     current_user.notifier.delete
-    redirect_to notifier_path
+    redirect_to notifier_path, notice: 'Slack notification was unregistered.'
   end
 
   private
