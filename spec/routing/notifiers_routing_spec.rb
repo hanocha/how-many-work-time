@@ -14,4 +14,11 @@ RSpec.describe NotifiersController, type: :routing do
         to route_to(controller: 'notifiers', action: 'create')
     end
   end
+
+  describe 'DELETE /notifier' do
+    it do
+      expect(delete: '/notifier').
+        to route_to(controller: 'notifiers', action: 'destroy')
+    end
+  end 
 end
