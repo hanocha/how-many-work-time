@@ -10,6 +10,11 @@ class NotifiersController < ApplicationController
     redirect_to notifier_path
   end
 
+  def destroy
+    current_user.notifier.delete
+    redirect_to notifier_path
+  end
+
   private
 
   def notifier_params

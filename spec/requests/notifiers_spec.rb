@@ -55,4 +55,16 @@ RSpec.describe 'Notifiers', type: :request do
       end
     end
   end
+
+  describe '#destroy' do
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:notifier) { FactoryGirl.create(:notifier, user_id: user.id) }
+    
+    before { login_as user }
+
+    it 'ログイン中ユーザの Slack 通知設定を削除する' do
+      delete notifier_path
+      expect(user.reload.notifier).to be_nil
+    end
+  end
 end
