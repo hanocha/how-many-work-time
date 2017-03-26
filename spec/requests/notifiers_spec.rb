@@ -2,9 +2,22 @@ require 'rails_helper'
 
 RSpec.describe 'Notifiers', type: :request do
   describe '#show' do
-    it 'ステータスコード 200 を返す' do
-      get notifier_path
-      expect(response).to have_http_status(:ok)
+    context 'ログイン済みのとき' do
+      let(:user) { FactoryGirl.create(:user) }
+      
+      before { login_as user }
+
+      it 'ステータスコード 200 を返す' do
+        get notifier_path
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context '未ログインのとき' do
+      it 'ログインページにリダイレクトする' do
+        get notifier_path
+        expect(response).to redirect_to(new_user_session_path)
+      end
     end
   end
 
