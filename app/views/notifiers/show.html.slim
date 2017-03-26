@@ -1,2 +1,24 @@
 .content
   h2 Register Slack Notification 
+
+  | current status:
+  - if @notifier.user_id
+    | enabled
+  -else
+    | disabled
+
+  h3 Register
+  
+  = form_for(@notifier, url: notifier_path, method: :post) do |f|
+    = f.hidden_field(:user_id, value: current_user.id)
+    
+    p.control.has-icon
+      = f.text_field(:slack_user_name, class: 'input', placeholder: 'User name of Slack')
+      span.icon.is-small
+        = fa_icon "user"
+      
+    p.control
+      = button_tag type: 'submit', class: 'button is-primary' do
+        span.icon.is-small
+          = fa_icon "check"
+        span Submit
