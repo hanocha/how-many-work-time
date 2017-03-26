@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'Notifiers', type: :request do
+  describe '#show' do
+    it 'ステータスコード 200 を返す' do
+      get notifier_path
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
   describe '#create' do
     let(:user) { FactoryGirl.create(:user) }
     
