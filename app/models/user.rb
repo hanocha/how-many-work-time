@@ -7,6 +7,8 @@ class User < ApplicationRecord
   before_save :encrypt_code
   attr_writer :code
 
+  has_one :notifier
+
   CIPHER = 'aes-256-cbc'
 
   def code
