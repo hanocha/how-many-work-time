@@ -62,8 +62,9 @@ gem 'mechanize'
 gem 'pg'
 gem 'ridgepole'
 gem 'ridgepole-rails', github: 'sakuro/ridgepole-rails'
-gem 'slim-rails'
+gem 'sidekiq'
 gem 'slack-ruby-client'
+gem 'slim-rails'
 
 group :development, :test do
   gem 'pry-byebug'
