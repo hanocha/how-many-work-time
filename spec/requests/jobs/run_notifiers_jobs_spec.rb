@@ -6,9 +6,9 @@ RSpec.describe 'Jobs::RunNotifiersJobs', type: :request do
     context 'POST /jobs/run_notifiers' do
       subject { post '/jobs/run_notifiers' }
 
-      xit 'NotifyToSlackJob をエンキューする' do
+      xit 'RunNotifiersJob をエンキューする' do
         ActiveJob::Base.queue_adapter = :test
-        expect { subject }.to have_enqueued_job(NotifyToSlackJob)
+        expect { subject }.to have_enqueued_job(RunNotifiersJob)
       end
 
       xit 'ステータスコード 201 Created を返す' do
