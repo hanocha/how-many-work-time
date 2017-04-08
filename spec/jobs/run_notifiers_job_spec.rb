@@ -6,9 +6,22 @@ RSpec.describe RunNotifiersJob, type: :job do
 
     subject { RunNotifiersJob.perform_now }
 
-    it 'NotifyToSlackJob をエンキューする' do
-      ActiveJob::Base.queue_adapter = :test
-      expect { subject }.to have_enqueued_job(NotifyToSlackJob).with(notifier_1.id)
+    context '平日の場合' do
+      before { travel_to '2017-04-07 00:00:00 JST' }
+
+      it 'NotifyToSlackJob をエンキューする' do
+        ActiveJob::Base.queue_adapter = :test
+        expect { subject }.to have_enqueued_job(NotifyToSlackJob).with(notifier_1.id)
+      end
+    end
+
+    context '土日の場合' do
+      before { travel_to '2017-04-08 09:00:01 JST' }
+
+      it 'NotifyToSlackJob をエンキューしない' do
+        ActiveJob::Base.queue_adapter = :test
+        expect { subject }.not_to have_enqueued_job(NotifyToSlackJob)
+      end
     end
   end
 end
