@@ -7,7 +7,7 @@ class Jobs::RunNotifiersJobsController < ActionController::API
   )
 
   def create
-    NotifyToSlackJob.perform_later
+    RunNotifiersJob.perform_later
     head :created
   end
 end

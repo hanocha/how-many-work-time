@@ -51,9 +51,9 @@ RSpec.describe NotifyToSlackJob, type: :job do
         and_return(1.5)
     end
 
-    subject { NotifyToSlackJob.perform_now }
+    subject { NotifyToSlackJob.perform_now(notifier.id) }
 
-    it 'Notifier を登録しているユーザに Slack の IM を送る' do
+    it '指定されたNotifier ID のユーザに Slack の IM を送る' do
       subject
       expect(slack_postMessage_stub).to have_been_requested
     end
